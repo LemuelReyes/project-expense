@@ -1,0 +1,14 @@
+extends ./layout.pug
+
+block content
+    form(action="/budget" method="POST")
+        input(type="number" placeholder="Enter your budget" name="budget")
+        button Submit
+    form(action="/expense-minus" method="POST")
+            input(type="text" placeholder="Enter your expense" name="expenseName")
+            input(type="number" placeholder="$" name="expenseAmount")
+            button Submit
+    form(action="/expense-plus" method="POST")
+        input(type="text" placeholder="Enter income assets" name="asset-name")
+        input(type="number" placeholder="$" name="asset-amount")
+        button Submit
