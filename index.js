@@ -1,6 +1,13 @@
 const express = require('express')
 const app = express()
-const port = 3000
+const mongodb = require('mongodb')
+let db
+
+let connectionString = 'mongodb+srv://LemuelReyes:expenseapp@cluster0-c3pbt.mongodb.net/FamExpenseApp?retryWrites=true&w=majority'
+mongodb.connect(connectionString, {useNewUrlParser: true, useUnifiedTopology: true}, function(err, client){
+   db = client.db()
+   app.listen(3000)
+})
 
 app.set('view engine', 'pug');
 app.use('/', express.static('public'));
@@ -13,13 +20,18 @@ app.get('/', function(req, res){
 
 app.post('/budget', function(req, res){
     console.log(req.body.budget)
-    res.send(`Your budget is ${req.body.budget}`)
+    res.send(`Your budget is: ${req.body.budget}`)
 })
 
-app.post('/expense-minus', function(req, res){
+app.post('/expense', function(req, res){
+    db.collection('Expenses').insertOne({expense: req.body.expenseName, amount: req.body.expenseAmount}, function(){
+        res.send(`Thanks for submitting your expense.`)
+    })
+})
+
+app.post('/asset', function(req, res){
     console.log(req.body.expenseName, req.body.expenseAmount)
     
-    res.send(`Thanks for submitting`)
+    res.send(`Asset: ${req.body.assetName}, Amount: ${req.body.assetAmount} `)
 })
 
-app.listen(3000, console.log(`app is running on ${3000}`))
