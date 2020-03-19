@@ -12,5 +12,24 @@ block content
         input(type="text" placeholder="Enter income assets" name="assetName")
         input(type="number" placeholder="$" name="assetAmount")
         button Submit
-    p(id="budget") Budget
-    p(id="total") Total
+    div
+    h1(id="budget") Budget:
+    each expense in expenses
+            h1= expense.budget
+    h1 Expense / Assets History
+    ul(class="client-history") 
+        for expense in expenses
+            p= expense.expense
+            p= expense.expenseAmount
+            p= expense.asset
+            p= expense.assetAmount
+                    //- p= expense.expense + ": " + expense.expenseAmount
+                    
+                    //- p= expense.expense 
+                    //- li
+                    //-     h2!= expense.expense + ": " + expense.expenseAmount + "-"
+                    //- li  
+                    //-     h2!= expense.asset + ": " + expense.assetAmount + "+"
+            console.log(expense.assetAmount)
+    p(id="total") Total    
+    
