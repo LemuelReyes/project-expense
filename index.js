@@ -39,15 +39,33 @@ app.get('/', function(req, res){
         //calculates total
         let calculateTotal = function(expenseNumber, assetNumber) {
             if(assetNumber > expenseNumber) {
-                return (`Total: +${assetNumber - expenseNumber}`)
+                return assetNumber - expenseNumber
             } else if(expenseNumber > assetNumber) {
-                return (`Total: -${expenseNumber - assetNumber}`) 
+                return assetNumber - expenseNumber
             }
         }
         
-        let total = calculateTotal(expenseNumber, assetNumber)
+        let historyTotal = calculateTotal(expenseNumber, assetNumber)
+    
+        //calculates budget 
+        const budget = expenses.filter(number => number.budget)        
+        const budgetTotal = Number(budget[0].budget)
+        console.log(`Your budget is: ${budgetTotal}`)
 
-        res.render('index', {expenses: expenses, total})
+        const calculateBalance = function(budgetTotal, assetNumber, expenseNumber) {
+           // budget + income - expenses = net income
+            
+            if(budgetTotal + assetNumber - expenseNumber <= 0) {
+                return `You are over budget`
+            } else if(budgetTotal + assetNumber - expenseNumber > 0){
+                return `You are within budget`
+            }
+        }
+
+        const balance = calculateBalance(budgetTotal, assetNumber, expenseNumber)
+        console.log(balance)
+
+        res.render('index', {expenses: expenses, historyTotal, balance})
     })  
 })
 
