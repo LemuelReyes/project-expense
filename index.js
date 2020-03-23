@@ -15,15 +15,39 @@ app.use(express.urlencoded({extended: false}))
 
 app.get('/', function(req, res){
     db.collection('Expenses').find().toArray(function(err, expenses){
-        // console.log(expenses)
-        const theExpenses = expenses
-        const iterator = theExpenses.keys()
+        
+        // calculates expenses
+        const expenseNumber = expenses.reduce(function(prev, current){
+            if(current.expenseAmount) {
+                return prev += Number(current.expenseAmount)
+            }
+            return prev
+        }, 0)
 
-        for (const key of iterator) {
-            console.log(key);
+        console.log('Expense total:', expenseNumber)
+
+        //calculates assets
+        const assetNumber = expenses.reduce(function(prev, current){
+            if(current.assetAmount) {
+                return prev += Number(current.assetAmount)
+            }
+            return prev
+        }, 0)
+
+        console.log('Asset total:', assetNumber)
+
+        //calculates total
+        let calculateTotal = function(expenseNumber, assetNumber) {
+            if(assetNumber > expenseNumber) {
+                return (`Total: +${assetNumber - expenseNumber}`)
+            } else if(expenseNumber > assetNumber) {
+                return (`Total: -${expenseNumber - assetNumber}`) 
+            }
         }
+        
+        let total = calculateTotal(expenseNumber, assetNumber)
 
-        res.render('index', {expenses: expenses})
+        res.render('index', {expenses: expenses, total})
     })  
 })
 
@@ -46,6 +70,7 @@ app.post('/asset', function(req, res){
     })
 })
 
+// assets - expenses
 
 // 1. amounts.filter()
 // get the total of the calculation of assets - expenses

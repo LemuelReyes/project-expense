@@ -17,19 +17,20 @@ block content
     each expense in expenses
             h1= expense.budget
     h1 Expense / Assets History
-    ul(class="client-history") 
-        for expense in expenses
-            p= expense.expense
-            p= expense.expenseAmount
-            p= expense.asset
-            p= expense.assetAmount
-                    //- p= expense.expense + ": " + expense.expenseAmount
-                    
-                    //- p= expense.expense 
-                    //- li
-                    //-     h2!= expense.expense + ": " + expense.expenseAmount + "-"
-                    //- li  
-                    //-     h2!= expense.asset + ": " + expense.assetAmount + "+"
-            console.log(expense.assetAmount)
-    p(id="total") Total    
+    table
+        thead
+            tr
+                th Expense
+                th Amount
+                th Asset
+                th Asset Amount
+        tbody
+            for expense in expenses
+                tr
+                    td= expense.expense
+                    td= expense.expenseAmount
+                    td= expense.asset
+                    td= expense.assetAmount
+  
+    p(id="total")= total    
     
