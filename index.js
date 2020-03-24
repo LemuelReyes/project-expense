@@ -2,11 +2,12 @@ const express = require('express')
 const app = express()
 const mongodb = require('mongodb')
 let db
+const port = process.env.PORT || 3000;
 
 let connectionString = 'mongodb+srv://LemuelReyes:expenseapp@cluster0-c3pbt.mongodb.net/FamExpenseApp?retryWrites=true&w=majority'
 mongodb.connect(connectionString, {useNewUrlParser: true, useUnifiedTopology: true}, function(err, client){
    db = client.db()
-   app.listen(3000)
+   app.listen(port)
 })
 
 app.set('view engine', 'pug');
