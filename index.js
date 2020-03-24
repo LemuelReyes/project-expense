@@ -16,6 +16,11 @@ app.use(express.urlencoded({extended: false}))
 app.get('/', function(req, res){
     db.collection('Expenses').find().toArray(function(err, expenses){
         
+        //calculates budget 
+        const budget = expenses.filter(number => number.budget)        
+        const budgetTotal = Number(budget[0].budget)
+        console.log(`Your budget is: ${budgetTotal}`)
+
         // calculates expenses
         const expenseNumber = expenses.reduce(function(prev, current){
             if(current.expenseAmount) {
@@ -37,20 +42,17 @@ app.get('/', function(req, res){
         console.log('Asset total:', assetNumber)
 
         //calculates total
-        let calculateTotal = function(expenseNumber, assetNumber) {
+        let calculateTotal = function(budgetTotal, expenseNumber, assetNumber) {
             if(assetNumber > expenseNumber) {
-                return assetNumber - expenseNumber
+                return budgetTotal + assetNumber - expenseNumber
             } else if(expenseNumber > assetNumber) {
-                return assetNumber - expenseNumber
+                return budgetTotal + assetNumber - expenseNumber
             }
         }
         
-        let historyTotal = calculateTotal(expenseNumber, assetNumber)
+        let historyTotal = calculateTotal(budgetTotal, expenseNumber, assetNumber)
     
-        //calculates budget 
-        const budget = expenses.filter(number => number.budget)        
-        const budgetTotal = Number(budget[0].budget)
-        console.log(`Your budget is: ${budgetTotal}`)
+        // calculates balance
 
         const calculateBalance = function(budgetTotal, assetNumber, expenseNumber) {
            // budget + income - expenses = net income
