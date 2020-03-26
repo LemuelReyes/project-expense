@@ -1,0 +1,24 @@
+const express = require('express');
+const app = express();
+const router = express.Router();
+
+// MIDDLEWARE
+app.set('view engine', 'pug');
+
+app.post('/budget', function(req, res){
+    db.collection('Expenses').insertOne({budget: req.body.budget}, function(){
+        res.redirect('/')
+    })
+})
+
+app.post('/expense', function(req, res){
+    db.collection('Expenses').insertOne({expense: req.body.expenseName, expenseAmount: req.body.expenseAmount}, function(){
+        res.redirect('/')
+    })
+})
+
+app.post('/asset', function(req, res){
+    db.collection('Expenses').insertOne({asset: req.body.assetName, assetAmount: req.body.assetAmount}, function(){
+    
+    res.redirect('/')
+    })
