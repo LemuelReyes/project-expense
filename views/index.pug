@@ -12,26 +12,32 @@ block content
         input(type="text" placeholder="Enter income assets" name="assetName")
         input(type="number" placeholder="$" name="assetAmount")
         button Submit
-    div
-    h1(id="budget") Budget:
-    each expense in expenses
-            h1= expense.budget
-    h1 Expense / Assets History
-    table
-        thead
-            tr
-                th Expense
-                th Amount
-                th Asset
-                th Asset Amount
-        tbody
-            for expense in expenses
-                tr
-                    td= expense.expense
-                    td= expense.expenseAmount
-                    td= expense.asset
-                    td= expense.assetAmount
-    p Total
-    p(id="total")= historyTotal    
-    p= balance
+
+    for expense in numbers.expenses
+        p= numbers.expenses
+
+
+
+//-     div
+//-     h1(id="budget") Budget:
+//-  le
+//-         thead
+//-             tr
+//-                 th Expense
+//-                 th Amount
+//-                 th Asset
+//-                 th Asset Amount
+//-         tbody
+//-             for expense in expenses
+//-                 tr
+//-                     td= expense.expense
+//-                     td= expense.expenseAmount
+//-                     td= expense.asset
+//-                     td= expense.assetAmount
+//-     p Total
+//-     p(id="total")= historyTotal    
+//-     p= balance   each expense in expenses
+//-             h1= expense.budget
+//-     h1 Expense / Assets History
+//-     tab
     

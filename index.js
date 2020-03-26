@@ -1,76 +1,42 @@
 const express = require('express')
 const app = express()
-const mongodb = require('mongodb')
-let db
 const port = process.env.PORT || 3000;
 
-let connectionString = 'mongodb+srv://LemuelReyes:expenseapp@cluster0-c3pbt.mongodb.net/FamExpenseApp?retryWrites=true&w=majority'
-mongodb.connect(connectionString, {useNewUrlParser: true, useUnifiedTopology: true}, function(err, client){
-   db = client.db()
-   app.listen(port)
-})
+// Mongoose 
+const mongoose = require('mongoose');
+let uri = 'mongodb+srv://LemuelReyes:expenseapp@cluster0-c3pbt.mongodb.net/FamExpenseApp?retryWrites=true&w=majority';
+mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
+// Mongoose model
+
+const expenses = mongoose.model('Expenses', {
+    budget: String
+});
+
+// View is Pug for frontend
 app.set('view engine', 'pug');
 app.use('/', express.static('public'));
 app.use(express.urlencoded({extended: false}))
 
-app.get('/', function(req, res){
-    db.collection('Expenses').find().toArray(function(err, expenses){
-        
-        //calculates budget 
-        const budget = expenses.filter(number => number.budget)        
-        const budgetTotal = Number(budget[0].budget)
-        console.log(`Your budget is: ${budgetTotal}`)
+// Main page
+app.get('/', async (req, res) => {
 
-        // calculates expenses
-        const expenseNumber = expenses.reduce(function(prev, current){
-            if(current.expenseAmount) {
-                return prev += Number(current.expenseAmount)
-            }
-            return prev
-        }, 0)
+    const documents = await expenses.find().exec();
 
-        console.log('Expense total:', expenseNumber)
+    const indexVariables = {
+        expenses: documents
+    }
 
-        //calculates assets
-        const assetNumber = expenses.reduce(function(prev, current){
-            if(current.assetAmount) {
-                return prev += Number(current.assetAmount)
-            }
-            return prev
-        }, 0)
+    console.log(indexVariables)
 
-        console.log('Asset total:', assetNumber)
-
-        //calculates total
-        let calculateTotal = function(budgetTotal, expenseNumber, assetNumber) {
-            if(assetNumber > expenseNumber) {
-                return budgetTotal + assetNumber - expenseNumber
-            } else if(expenseNumber > assetNumber) {
-                return budgetTotal + assetNumber - expenseNumber
-            }
-        }
-        
-        let historyTotal = calculateTotal(budgetTotal, expenseNumber, assetNumber)
-    
-        // calculates balance
-
-        const calculateBalance = function(budgetTotal, assetNumber, expenseNumber) {
-           // budget + income - expenses = net income
-            
-            if(budgetTotal + assetNumber - expenseNumber <= 0) {
-                return `You are over budget`
-            } else if(budgetTotal + assetNumber - expenseNumber > 0){
-                return `You are within budget`
-            }
-        }
-
-        const balance = calculateBalance(budgetTotal, assetNumber, expenseNumber)
-        console.log(balance)
-
-        res.render('index', {expenses: expenses, historyTotal, balance})
+        res.render('index', { numbers: indexVariables});
     })  
-})
+
+
+// app.get('/delete:id', async (req, res) => {
+//     const itemDelete = req.params.id
+//     const document = await expenses.findById(itemDelete).exec();
+// })
 
 app.post('/budget', function(req, res){
     db.collection('Expenses').insertOne({budget: req.body.budget}, function(){
@@ -90,6 +56,12 @@ app.post('/asset', function(req, res){
     res.redirect('/')
     })
 })
+
+
+app.listen(port, () => {
+    console.log(`Server running on port ${port}`);
+});
+
 
 // assets - expenses
 
