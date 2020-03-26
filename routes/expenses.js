@@ -5,6 +5,10 @@ const router = express.Router();
 // MIDDLEWARE
 app.set('view engine', 'pug');
 
+router.get('/', (req, res) => {
+    res.render('index')
+});
+
 module.exports = router;
 
 // app.post('/budget', function(req, res){
