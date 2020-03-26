@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const router = express.Router();
+const Expenses = require('../models/Expense');
 
 // MIDDLEWARE
 app.set('view engine', 'pug');
