@@ -11,23 +11,20 @@ app.use('/', express.static('public'));
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
 
-// Mongoose 
+// IMPORT ROUTES
+
+const expensesRoute = require('./routes/expenses');
+app.use('/', expensesRoute)
+
+// MONGOOSE
 
 mongoose.connect(process.env.DB_CONNECTION, { useNewUrlParser: true, useUnifiedTopology: true }, ()=>
     console.log('DB IS CONNECTED')
 );
 
-// Main page
+// LISTEN TO SERVER
 
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
 });
 
-
-// assets - expenses
-
-// 1. amounts.filter()
-// get the total of the calculation of assets - expenses
-// 2. push it total variable
-// 3. if total less or equal than budget, log = within budget
-// if total more than budget, log = over budget
