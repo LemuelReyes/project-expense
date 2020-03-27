@@ -25,10 +25,8 @@ block content
     each report in expenseReport
         div(class="reports__container")
             p(class="red__bg")= report.expense 
-                a(href="/delete/" + report._id) Delete
             p(class="red__bg")= report.expenseAmount
                 a(href="/delete/" + report._id) Delete
             p(class="green__bg")= report.asset
-                a(href="/delete/" + report._id) Delete
             p(class="green__bg")= report.assetAmount
                 a(href="/delete/" + report._id) Delete

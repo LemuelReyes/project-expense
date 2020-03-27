@@ -9,7 +9,6 @@ app.set('view engine', 'pug');
 // READ
 
 router.get('/', async(req,res) => {
-    
     try {
         const documents = await Expenses.find();
         res.render('index', { expenseReport: documents })
@@ -19,17 +18,35 @@ router.get('/', async(req,res) => {
 });
 
 // CREATE
-router.post('/reportBudget', (req,res) => {
-    const reportBudget = {
-        budget: req.body.budget,
-        expense: req.body.expense,
-        expenseAmount: req.body.expenseAmount,
-        asset: req.body.asset,
-        assetAmount: req.body.assetAmount
-    };
-    const saveReport = new Expenses(reportBudget);
-    saveReport.save();
-    res.redirect('/');
+router.post('/reportBudget', async (req,res) => {
+
+    try {
+        const reportBudget = {
+            budget: req.body.budget,
+            expense: req.body.expense,
+            expenseAmount: req.body.expenseAmount,
+            asset: req.body.asset,
+            assetAmount: req.body.assetAmount
+        };
+        const saveReport = await new Expenses(reportBudget);
+        saveReport.save();
+        res.redirect('/');
+
+    } catch(err) {
+        res.render({ message: err});
+    }
+});
+
+// DELETE
+
+router.get('/delete/:postId', async(req, res) => {
+    try {
+        const deleteId = await Expenses.findById(req.params.postId);
+        await Expenses.deleteOne({ _id: deleteId });
+        res.redirect('/');
+    } catch(err) {
+        res.json({ message: err })
+    }
 });
 
 // router.post('/reportExpenses', (req,res) => {
@@ -50,8 +67,10 @@ router.post('/reportBudget', (req,res) => {
 
 // });
 
-// // DELETE
+module.exports = router;
 
+
+// 
 // router.delete('/delete/:id', async (req, res) => {
 //     try {
 //         await Expenses.deleteOne({ _id: req.params.postId });
@@ -60,5 +79,3 @@ router.post('/reportBudget', (req,res) => {
 //         res.json({ message: err })
 //     }
 // });
-
-module.exports = router;

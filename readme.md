@@ -70,3 +70,14 @@
     //- p= balance   each expense in expenses
     //-         h1= expense.budget
     //- tab
+
+
+
+
+            //- div(class="reports__container")
+        //-     p(class="red__bg")= report.expense 
+        //-     p(class="red__bg")= report.expenseAmount
+        //-         a(href="/delete/" + report._id) Delete
+        //-     p(class="green__bg")= report.asset
+        //-     p(class="green__bg")= report.assetAmount
+        //-         a(href="/delete/" + report._id) Delete
