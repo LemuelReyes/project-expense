@@ -4,7 +4,7 @@ block content
     form(action="/budget" method="POST")
         input(type="number" placeholder="Enter your budget" name="budget")
         button Submit
-    form(action="/expense" method="POST")
+    form(action="/expenses" method="POST")
             input(type="text" placeholder="Enter your expense" name="expenseName")
             input(type="number" placeholder="$" name="expenseAmount")
             button Submit
@@ -14,6 +14,10 @@ block content
         button Submit
 
     h1 Hello from index.pug
+
+    //- each expense in expenses
+    //-     p= expense.budget
+   
 
 
 

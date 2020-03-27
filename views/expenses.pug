@@ -1,0 +1,9 @@
+extends ./layout.pug
+
+block content
+    each report in expenseReport
+        p= report.budget
+        p= report.expense
+        p= report.expenseAmount
+        p= report.asset
+        p= report.assetAmount

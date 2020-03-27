@@ -2,29 +2,32 @@ const express = require('express')
 const app = express();
 const mongoose = require('mongoose');
 require('dotenv/config');
-const port = process.env.PORT || 3000;
 
 // MIDDLEWARE
 
 app.set('view engine', 'pug');
-app.use('/', express.static('public'));
-app.use(express.urlencoded({extended: false}));
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // IMPORT ROUTES
 
 const expensesRoute = require('./routes/expenses');
-app.use('/', expensesRoute)
+app.use('/expenses', expensesRoute)
+
+
+// ROUTES
+app.get('/', (req,res) => {
+    res.render('index')
+});
 
 // MONGOOSE
-
+console.log(process.env.DB_CONNECTION)
 mongoose.connect(process.env.DB_CONNECTION, { useNewUrlParser: true, useUnifiedTopology: true }, ()=>
-    console.log('DB IS CONNECTED')
-);
+console.log('DB IS CONNECTED'));
 
 // LISTEN TO SERVER
 
-app.listen(port, () => {
-    console.log(`Server running on port ${port}`);
+app.listen(3000, () => {
+    console.log(`Server running on port ${3000}`);
 });
 
