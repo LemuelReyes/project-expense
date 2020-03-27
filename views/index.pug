@@ -2,14 +2,14 @@ extends ./layout.pug
 
 block styles
 block content
-    form(action="/budget" method="POST")
+    form(action="/reportBudget" method="POST")
         input(type="number" placeholder="Enter your budget" name="budget")
         button Submit
-    form(action="/expenses" method="POST")
+    form(action="/reportExpenses" method="POST")
             input(type="text" placeholder="Enter your expense" name="expenseName")
             input(type="number" placeholder="$" name="expenseAmount")
             button Submit
-    form(action="/asset" method="POST")
+    form(action="/reportAssets" method="POST")
         input(type="text" placeholder="Enter income assets" name="assetName")
         input(type="number" placeholder="$" name="assetAmount")
         button Submit
@@ -24,7 +24,11 @@ block content
         h2 Amount
     each report in expenseReport
         div(class="reports__container")
-            p(class="red__bg")= report.expense
+            p(class="red__bg")= report.expense 
+                a(href="/delete/" + report._id) Delete
             p(class="red__bg")= report.expenseAmount
+                a(href="/delete/" + report._id) Delete
             p(class="green__bg")= report.asset
+                a(href="/delete/" + report._id) Delete
             p(class="green__bg")= report.assetAmount
+                a(href="/delete/" + report._id) Delete

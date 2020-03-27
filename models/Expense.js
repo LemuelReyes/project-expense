@@ -3,23 +3,18 @@ const mongoose = require('mongoose');
 const ExpenseSchema = mongoose.Schema({
     budget: {
         type: String,
-        required: true
     },
     expense: {
-        type: String,
-        required: true
+        type: String
     },
     expenseAmount: {
-        type: Number,
-        required: true
+        type: Number
     },
     asset: {
-        type: String,
-        required: true
+        type: String
     },
     assetAmount: {
-        type: Number,
-        required: true
+        type: Number
     },
 })
 
