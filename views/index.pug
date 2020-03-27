@@ -5,12 +5,12 @@ block content
     form(action="/reportBudget" method="POST")
         input(type="number" placeholder="Enter your budget" name="budget")
         button Submit
-    form(action="/reportExpenses" method="POST")
-            input(type="text" placeholder="Enter your expense" name="expenseName")
+    form(action="/reportBudget" method="POST")
+            input(type="text" placeholder="Enter your expense" name="expense")
             input(type="number" placeholder="$" name="expenseAmount")
             button Submit
-    form(action="/reportAssets" method="POST")
-        input(type="text" placeholder="Enter income assets" name="assetName")
+    form(action="/reportBudget" method="POST")
+        input(type="text" placeholder="Enter income assets" name="asset")
         input(type="number" placeholder="$" name="assetAmount")
         button Submit
     h1 Budget:    

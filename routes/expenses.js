@@ -19,26 +19,26 @@ router.get('/', async(req,res) => {
 });
 
 // CREATE
-
 router.post('/reportBudget', (req,res) => {
     const reportBudget = {
-        budget: req.body.budget
+        budget: req.body.budget,
+        expense: req.body.expense,
+        expenseAmount: req.body.expenseAmount,
+        asset: req.body.asset,
+        assetAmount: req.body.assetAmount
     };
     const saveReport = new Expenses(reportBudget);
     saveReport.save();
     res.redirect('/');
 });
 
-// router.post('/reportExpenses', async(req,res) => {
-//     console.log(req.body)
-//     const report = new Expenses({
-//         budget: req.body.budget,
+// router.post('/reportExpenses', (req,res) => {
+//     const reportExpenses = {
 //         expense: req.body.expense,
 //         expenseAmount: req.body.expenseAmount,
-//         asset: req.body.asset,
-//         assetAmount: req.body.assetAmount
-//     });
-
+//     };
+//     const saveExpenses = new Expenses(reportExpenses);
+//     saveExpenses.save();
 //     try {
 //         const saveReport = await report.save();
 //         res.json(saveReport);
