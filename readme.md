@@ -50,3 +50,23 @@
 
     //     const balance = calculateBalance(budgetTotal, assetNumber, expenseNumber)
     //     console.log(balance)
+
+
+      //-     thead
+    //-         tr
+    //-             th Expense
+    //-             th Amount
+    //-             th Asset
+    //-             th Asset Amount
+    //-     tbody
+    //-         for expense in expenses
+    //-             tr
+    //-                 td= expense.expense
+    //-                 td= expense.expenseAmount
+    //-                 td= expense.asset
+    //-                 td= expense.assetAmount
+    //- p Total
+    //- p(id="total")= historyTotal    
+    //- p= balance   each expense in expenses
+    //-         h1= expense.budget
+    //- tab

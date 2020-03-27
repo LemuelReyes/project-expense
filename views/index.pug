@@ -1,5 +1,6 @@
 extends ./layout.pug
 
+block styles
 block content
     form(action="/budget" method="POST")
         input(type="number" placeholder="Enter your budget" name="budget")
@@ -12,35 +13,18 @@ block content
         input(type="text" placeholder="Enter income assets" name="assetName")
         input(type="number" placeholder="$" name="assetAmount")
         button Submit
-
-    h1 Hello from index.pug
-
-    //- each expense in expenses
-    //-     p= expense.budget
-   
-
-
-
-//-     div
-//-     h1(id="budget") Budget:
-//-  le
-//-         thead
-//-             tr
-//-                 th Expense
-//-                 th Amount
-//-                 th Asset
-//-                 th Asset Amount
-//-         tbody
-//-             for expense in expenses
-//-                 tr
-//-                     td= expense.expense
-//-                     td= expense.expenseAmount
-//-                     td= expense.asset
-//-                     td= expense.assetAmount
-//-     p Total
-//-     p(id="total")= historyTotal    
-//-     p= balance   each expense in expenses
-//-             h1= expense.budget
-//-     h1 Expense / Assets History
-//-     tab
-    
+    h1 Budget:    
+    each report in expenseReport
+        h2= report.budget
+    h1 Expense / Assets History
+    div(class="categories__container")
+        h2 Expense
+        h2 Amount
+        h2 Asset
+        h2 Amount
+    each report in expenseReport
+        div(class="reports__container")
+            p(class="red__bg")= report.expense
+            p(class="red__bg")= report.expenseAmount
+            p(class="green__bg")= report.asset
+            p(class="green__bg")= report.assetAmount

@@ -6,13 +6,14 @@ require('dotenv/config');
 // MIDDLEWARE
 
 app.set('view engine', 'pug');
+app.use(express.static(__dirname + '/public'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // IMPORT ROUTES
 
 const expensesRoute = require('./routes/expenses');
-app.use('/expenses', expensesRoute)
+app.use('/', expensesRoute)
 
 
 // ROUTES
