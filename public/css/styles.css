@@ -4,11 +4,11 @@
     justify-content: space-evenly;
     background-color: #228844;
 }
-// .reports__container {
-//     display: flex;
-//     flex-direction: row;
-//     justify-content: space-evenly;
-// }
+.reports__container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
 }
 .green__bg {
     background-color: #10d167;
