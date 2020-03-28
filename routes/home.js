@@ -53,33 +53,4 @@ router.get('/delete/:postId', async(req, res) => {
     }
 });
 
-// router.post('/reportExpenses', (req,res) => {
-//     const reportExpenses = {
-//         expense: req.body.expense,
-//         expenseAmount: req.body.expenseAmount,
-//     };
-//     const saveExpenses = new Expenses(reportExpenses);
-//     saveExpenses.save();
-//     try {
-//         const saveReport = await report.save();
-//         res.json(saveReport);
-//     } catch(err) {
-//         res.json({ message: err })
-//     }
-
-//     res.render('index', {variables: report});
-
-// });
-
 module.exports = router;
-
-
-// 
-// router.delete('/delete/:id', async (req, res) => {
-//     try {
-//         await Expenses.deleteOne({ _id: req.params.postId });
-//         res.redirect('/');
-//     } catch(err) {
-//         res.json({ message: err })
-//     }
-// });
