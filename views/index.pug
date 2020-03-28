@@ -24,14 +24,16 @@ block content
     h1 Expense / Assets History
     div(class="categories__container")
         h2 Expense
-        h2 Amount
         h2 Asset
         h2 Amount
         h2 Action
     each report in expenseReport
         div(class="reports__container")
             h2(class="red__bg")= report.expense
-            h2(class="red__bg")= report.expenseAmount
             h2(class="green__bg")= report.asset
-            h2(class="green__bg")= report.assetAmount
-            a(class="red__bg" href="/delete/" + report._id) Delete
+            div
+                h2(class="red__bg")= report.expenseAmount
+                h2(class="green__bg")= report.assetAmount
+            div
+                a(class="blue__bg" href="/update/" + report._id) Update
+                a(class="red__bg" href="/delete/" + report._id) Delete
