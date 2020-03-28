@@ -12,8 +12,8 @@ app.use(express.json());
 
 // IMPORT ROUTES
 
-const expensesRoute = require('./routes/expenses');
-app.use('/', expensesRoute)
+const home = require('./routes/home');
+app.use('/', home)
 
 
 // ROUTES

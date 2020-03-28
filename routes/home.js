@@ -11,8 +11,11 @@ app.set('view engine', 'pug');
 router.get('/', async(req,res) => {
     try {
         const documents = await Expenses.find();
-        // docs = documents.map((doc) => { return doc });
-        res.render('index', { expenseReport: documents })
+
+        const budgets = documents.filter(expense => expense.budget);
+        const reports = documents.filter(expense => !expense.budget);
+
+        res.render('index', { expenseReport: reports, budgets})
     } catch(err) {
         res.json({ message: err});
     }

@@ -14,9 +14,9 @@ block content
         input(type="number" placeholder="$" name="assetAmount")
         button Submit
     h1 Budget:    
-    each report in expenseReport
-        h2= report.budget
-            a(href="/delete/" + report._id) Delete
+    each budget in budgets
+        h2= budget.budget
+            a(href="/delete/" + budget._id) Delete
 
     h1 Expense / Assets History
     div(class="categories__container")
@@ -24,20 +24,11 @@ block content
         h2 Amount
         h2 Asset
         h2 Amount
-
-    table
-    thead
-        tr(class="categories__container")
-            th Expense
-            th Amount 
-            th Asset
-            th Amount
-        tbody
-            each report in expenseReport
-                tr(style="background-color: red;")
-                    td(class="red__bg")= report.expense
-                    td(class="red__bg")= report.expenseAmount
-                        a(href="/delete/" + report._id) Delete
-                    td= report.asset
-                    td= report.assetAmount
-                        a(href="/delete/" + report._id) Delete
+        h2 Action
+    each report in expenseReport
+        div(class="reports__container")
+            h2= report.expense
+            h2= report.expenseAmount
+            h2= report.asset
+            h2= report.assetAmount
+            a(href="/delete/" + report._id) Delete
