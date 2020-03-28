@@ -81,3 +81,14 @@
         //-     p(class="green__bg")= report.asset
         //-     p(class="green__bg")= report.assetAmount
         //-         a(href="/delete/" + report._id) Delete
+
+
+
+                      div(class="reports__container")
+        each report in expenseReport
+            p(class="red__bg")= report.expense 
+            p(class="red__bg")= report.expenseAmount
+                a(href="/delete/" + report._id) Delete
+            p(class="green__bg")= report.asset
+            p(class="green__bg")= report.assetAmount
+                a(href="/delete/" + report._id) Delete

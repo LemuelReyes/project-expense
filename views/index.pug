@@ -16,17 +16,28 @@ block content
     h1 Budget:    
     each report in expenseReport
         h2= report.budget
+            a(href="/delete/" + report._id) Delete
+
     h1 Expense / Assets History
     div(class="categories__container")
         h2 Expense
         h2 Amount
         h2 Asset
         h2 Amount
-    each report in expenseReport
-        div(class="reports__container")
-            p(class="red__bg")= report.expense 
-            p(class="red__bg")= report.expenseAmount
-                a(href="/delete/" + report._id) Delete
-            p(class="green__bg")= report.asset
-            p(class="green__bg")= report.assetAmount
-                a(href="/delete/" + report._id) Delete
+
+    table
+    thead
+        tr(class="categories__container")
+            th Expense
+            th Amount 
+            th Asset
+            th Amount
+        tbody
+            each report in expenseReport
+                tr(style="background-color: red;")
+                    td(class="red__bg")= report.expense
+                    td(class="red__bg")= report.expenseAmount
+                        a(href="/delete/" + report._id) Delete
+                    td= report.asset
+                    td= report.assetAmount
+                        a(href="/delete/" + report._id) Delete

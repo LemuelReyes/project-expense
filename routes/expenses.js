@@ -7,10 +7,11 @@ const Expenses = require('../models/Expense');
 app.set('view engine', 'pug');
 
 // READ
-
+// Problem why my data renders three times
 router.get('/', async(req,res) => {
     try {
         const documents = await Expenses.find();
+        // docs = documents.map((doc) => { return doc });
         res.render('index', { expenseReport: documents })
     } catch(err) {
         res.json({ message: err});
@@ -28,8 +29,8 @@ router.post('/reportBudget', async (req,res) => {
             asset: req.body.asset,
             assetAmount: req.body.assetAmount
         };
-        const saveReport = await new Expenses(reportBudget);
-        saveReport.save();
+        const saveReport = new Expenses(reportBudget);
+        await saveReport.save();
         res.redirect('/');
 
     } catch(err) {

@@ -15,7 +15,7 @@ const ExpenseSchema = mongoose.Schema({
     },
     assetAmount: {
         type: Number
-    },
+    }
 })
 
 module.exports = mongoose.model('Expenses', ExpenseSchema)
