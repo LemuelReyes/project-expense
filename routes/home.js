@@ -77,7 +77,7 @@ router.get('/', async(req,res) => {
     console.log(balance)
   
     // render
-    res.render('index', { expenseReport: reports, budgets, historyTotal, balance })
+    res.render('index', { expenseReport: reports, budgets: budgets, historyTotal, balance })
     } catch(err) {
         res.json({ message: err});
     }
