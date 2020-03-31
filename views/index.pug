@@ -18,6 +18,7 @@ block content
             h1(class="category__titles budget__section") Budget:    
             each budget in budgets
                 h2(class="category__subtitle")= budget.budget
+                    a(class="blue__bg action__button update-me" href="/update/" + budget._id) Update                
                     a(class="action__button red__bg " href="/delete/" + budget._id) Delete
             h1(class="category__titles") Budget balance
                 p(class="category__subtitle")= balance
@@ -27,7 +28,6 @@ block content
             h1(class="category__titles") Expense / Assets History
             div(class="categories__container")
                 h1(class="history__titles") Expense
-                //- h1(class="history__titles") Asset
                 h1(class="history__titles") Amount
                 h1(class="history__titles") Action
             each report in expenseReport
@@ -39,5 +39,5 @@ block content
                         h2(class="red__bg reports__text")= report.expenseAmount 
                         h2(class="green__bg reports__text")= report.assetAmount
                     div
-                        a(class="blue__bg action__button" href="/update/" + report._id) Update
+                        a(class="blue__bg action__button update-me" href="/update/" + report._id) Update
                         a(class="red__bg action__button" href="/delete/" + report._id) Delete

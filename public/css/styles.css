@@ -11,7 +11,7 @@
     margin-bottom: 2rem;
     font-family: "Roboto-Regular";
     text-align: left;
-    margin-left: 3.5rem;
+    margin-left: 2.5rem;
     margin-top: 3rem;
     text-transform: uppercase;
 }
@@ -53,9 +53,8 @@ input {
 }
 .right__partition {
     border: 0.3px solid;
-    padding: 2rem;
+    padding: 1rem;
 }
-
 .history__titles:first-child {
     margin-left: 0rem;
 }

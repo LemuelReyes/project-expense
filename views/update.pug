@@ -1,0 +1,12 @@
+extends ./layout.pug
+
+block styles
+block content
+    h1 You can update here
+        form(method="POST" action="/update/" + document._id)
+            input(type="text" placeholder="Enter your budget" name="budget" value=document.budget )
+            input(type="text" placeholder="Enter your expense" name="expense" value=document.expense )
+            input(type="number" placeholder="Enter your expense amount" name="expenseAmount" value=document.expenseAmount)
+            input(type="text" placeholder="Enter your asset" name="asset" value=document.asset)
+            input(type="number" placeholder="Enter your asset amount" name="assetAmount" value=document.assetAmount)
+            button(class="submit__button") Submit
