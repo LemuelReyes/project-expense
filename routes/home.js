@@ -107,8 +107,7 @@ router.post('/reportBudget', async (req,res) => {
 
 router.get('/delete/:postId', async(req, res) => {
     try {
-        const deleteId = await Expenses.findById(req.params.postId);
-        await Expenses.deleteOne({ _id: deleteId });
+        await Expenses.deleteOne({ _id: req.params.postId });
         res.redirect('/');
     } catch(err) {
         res.json({ message: err })

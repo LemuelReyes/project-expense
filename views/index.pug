@@ -15,7 +15,7 @@ block content
                 input(type="text" placeholder="Enter income assets" name="asset")
                 input(type="number" placeholder="$" name="assetAmount")
                 button(class="submit__button") Submit
-            h1(class="category__titles") Budget:    
+            h1(class="category__titles budget__section") Budget:    
             each budget in budgets
                 h2(class="category__subtitle")= budget.budget
                     a(class="action__button red__bg " href="/delete/" + budget._id) Delete
@@ -23,7 +23,7 @@ block content
                 p(class="category__subtitle")= balance
             h1(class="category__titles") Funds Available
             h2(class="category__subtitle")= historyTotal    
-        div    
+        div(class="right__partition")
             h1(class="category__titles") Expense / Assets History
             div(class="categories__container")
                 h1(class="history__titles") Expense

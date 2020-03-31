@@ -1,6 +1,19 @@
+@font-face {
+    font-family: "Roboto";
+    src: url("./fonts/Roboto-Light.ttf");
+  }
+@font-face {
+    font-family: "Roboto-Regular";
+    src: url("./fonts/Roboto-Regular.ttf")
+}
 .app__title {
     font-size: 2.5rem;
     margin-bottom: 2rem;
+    font-family: "Roboto-Regular";
+    text-align: left;
+    margin-left: 3.5rem;
+    margin-top: 3rem;
+    text-transform: uppercase;
 }
 .half__partition {
     display: flex;
@@ -18,11 +31,15 @@ input {
     border-radius: 0.5rem;
     padding: 1rem;
 }
+.budget__section {
+    margin-top: 2rem;
+}
 .category__titles {
     font-size: 2rem;
+    font-family: "Roboto-Regular";
 }
-
 .category__subtitle {
+    font-family: "Roboto";
     margin: 1rem 0rem 1rem 0rem;
     font-size: 1.6rem;
 }
@@ -32,13 +49,20 @@ input {
     justify-content: space-evenly;
     text-decoration: underline;
     margin-bottom: 2rem;
+    margin-top: 2.5rem;
 }
+.right__partition {
+    border: 0.3px solid;
+    padding: 2rem;
+}
+
 .history__titles:first-child {
     margin-left: 0rem;
 }
 .history__titles {
     font-size: 2rem;
     margin-left: 8rem;
+    font-family: "Roboto";
 }
 .reports__container {
     display: flex;
@@ -51,6 +75,7 @@ input {
 .reports__text {
     font-size: 1.5rem;
     margin-right: 10rem;
+    font-family: "Roboto";
 }
 .reports__text--expense {
     margin-right: 10rem; 
@@ -59,6 +84,7 @@ input {
     color: black;
     font-size: 1.3rem;
     margin-left: 0.7rem;
+    font-family: "Roboto";
 }
 .green__bg {
     background-color: #10d167;
