@@ -13,8 +13,14 @@ app.use(express.json());
 // IMPORT ROUTES
 
 const home = require('./routes/home');
-app.use('/', home)
+const createThis = require('./routes/create')
+const updateThis = require('./routes/update');
+const deleteThis = require('./routes/delete');
 
+app.use('/', home);
+app.use('/', createThis)
+app.use('/', updateThis);
+app.use('/', deleteThis);
 
 // ROUTES
 app.get('/', (req,res) => {

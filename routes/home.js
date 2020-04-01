@@ -17,7 +17,7 @@ router.get('/', async(req,res) => {
     // expense, expenseAmount, asset, assetAmount
         const reports = documents.filter(expense => !expense.budget);
     // access documents   
-    const expenses = documents.map(report => report);
+        const expenses = documents.map(report => report);
 
     //calculates budget 
     const budget = expenses.filter(number => number.budget)        
@@ -75,72 +75,17 @@ router.get('/', async(req,res) => {
     console.log(balance)
   
     // render
-    res.render('index', { expenseReport: reports, budgets, historyTotal, balance })
+    res.render('index', 
+    { expenseReport: reports, 
+        budgets,  
+        expenseNumber, 
+        assetNumber,
+        historyTotal,
+        balance 
+    })
     } catch(err) {
         res.json({ message: err});
     }
-});
-
-// CREATE
-router.post('/reportBudget', async (req,res) => {
-
-    try {
-        const reportBudget = {
-            budget: req.body.budget,
-            expense: req.body.expense,
-            expenseAmount: req.body.expenseAmount,
-            asset: req.body.asset,
-            assetAmount: req.body.assetAmount
-        };
-        const saveReport = new Expenses(reportBudget);
-        await saveReport.save();
-        res.redirect('/');
-
-    } catch(err) {
-        res.render({ message: err});
-    }
-});
-
-// UPDATE
-
-router.get('/update/:id', async(req, res) => {
-    const idToUpdate = req.params.id;
-    const document = await Expenses.findById({ _id: idToUpdate }).exec();
-    res.render("update",  { document })
-});
-
-router.post('/update/:id', async(req, res) => {
-    const idToUpdate = req.params.id;
-
-    const updateReport = {
-        budget: req.body.budget,
-        expense: req.body.expense,
-        expenseAmount: req.body.expenseAmount,
-        asset: req.body.asset,
-        assetAmount: req.body.assetAmount
-    }
-
-    let filter = { _id: idToUpdate };
-
-    let result = await Expenses.updateOne(filter, updateReport).exec();
-    // console.log("Result: ", result)
-
-    res.redirect('/');
-});
- 
-// DELETE
-
-router.get('/delete/:id', async(req, res) => {
-    try {
-        await Expenses.deleteOne({ _id: req.params.id });
-        res.redirect('/');
-    } catch(err) {
-        res.json({ message: err })
-    }
-});
-
-router.post('/delete/:id', async(req,res) => {
-
 });
 
 module.exports = router;

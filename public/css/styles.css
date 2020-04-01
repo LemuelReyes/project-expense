@@ -11,7 +11,7 @@
     margin-bottom: 2rem;
     font-family: "Roboto-Regular";
     text-align: left;
-    margin-left: 2.5rem;
+    margin-left: 3.5rem;
     margin-top: 3rem;
     text-transform: uppercase;
 }
@@ -53,8 +53,9 @@ input {
 }
 .right__partition {
     border: 0.3px solid;
-    padding: 1rem;
+    padding: 2rem;
 }
+
 .history__titles:first-child {
     margin-left: 0rem;
 }
@@ -69,7 +70,7 @@ input {
     justify-content: space-between;
 }
 .reports__container div {
-    margin: 0.2rem;
+    margin: 0.2rem 0 0.5rem 0;
 }
 .reports__text {
     font-size: 1.5rem;
@@ -83,6 +84,7 @@ input {
     color: black;
     font-size: 1.3rem;
     margin-left: 0.7rem;
+    padding: 0.2rem;
     font-family: "Roboto";
 }
 .green__bg {
