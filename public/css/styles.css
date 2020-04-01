@@ -16,7 +16,7 @@
     margin-bottom: 2rem;
     font-family: "Roboto-Regular";
     text-align: left;
-    margin-left: 1rem;
+    margin-left: 3rem;
     margin-top: 3rem;
     text-transform: uppercase;
 }
@@ -73,6 +73,7 @@ input {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    margin-bottom: 0.5rem;
 }
 .reports__container div {
     margin: 0.2rem 0 0.5rem 0;
@@ -84,10 +85,13 @@ input {
 }
 .action__button {
     color: black;
-    font-size: 1.3rem;
+    font-size: 1rem;
     margin-left: 0.7rem;
-    padding: 0.2rem;
+    padding: 0.3rem;
     font-family: "Roboto";
+    text-decoration: none;
+    border: 0.1px solid;
+    border-radius: 20.5px;
 }
 .green__bg {
     background-color: #10d167;
