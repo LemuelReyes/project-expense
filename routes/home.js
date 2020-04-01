@@ -18,7 +18,6 @@ router.get('/', async(req,res) => {
         const reports = documents.filter(expense => !expense.budget);
     // access documents   
         const expenses = documents.map(report => report);
-
     //calculates budget 
     const budget = expenses.filter(number => number.budget)        
     const budgetTotal = Number(budget[0].budget)

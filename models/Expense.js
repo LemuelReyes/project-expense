@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const ExpenseSchema = mongoose.Schema({
     budget: {
-        type: String,
+        type: Number
     },
     expense: {
         type: String
