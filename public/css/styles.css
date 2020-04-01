@@ -1,3 +1,4 @@
+// FONTS 
 @font-face {
     font-family: "Roboto";
     src: url("./fonts/Roboto-Light.ttf");
@@ -6,6 +7,8 @@
     font-family: "Roboto-Regular";
     src: url("./fonts/Roboto-Regular.ttf")
 }
+
+// TITLES
 .app__title {
     font-size: 2.5rem;
     margin-bottom: 2rem;
@@ -15,10 +18,21 @@
     margin-top: 3rem;
     text-transform: uppercase;
 }
+// LAYOUT
+.container {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
 .half__partition {
     display: flex;
     justify-content: space-around;
 }
+.right__partition {
+    border: 0.3px solid;
+    padding: 2rem;
+}
+// FORMS
 input {
     border: 0.5px solid;
     border-radius: 0.5rem;
@@ -31,6 +45,8 @@ input {
     border-radius: 0.5rem;
     padding: 1rem;
 }
+// CATEGORY SECTIONS
+
 .budget__section {
     margin-top: 2rem;
 }
@@ -51,10 +67,7 @@ input {
     margin-bottom: 2rem;
     margin-top: 2.5rem;
 }
-.right__partition {
-    border: 0.3px solid;
-    padding: 2rem;
-}
+// EXPENSE / ASSET HISTORY
 
 .history__titles:first-child {
     margin-left: 0rem;
@@ -64,6 +77,8 @@ input {
     margin-left: 8rem;
     font-family: "Roboto";
 }
+// REPORTS 
+
 .reports__container {
     display: flex;
     flex-direction: row;
@@ -77,9 +92,6 @@ input {
     margin-right: 10rem;
     font-family: "Roboto";
 }
-.reports__text--expense {
-    margin-right: 10rem; 
-}
 .action__button {
     color: black;
     font-size: 1.3rem;
@@ -87,6 +99,8 @@ input {
     padding: 0.2rem;
     font-family: "Roboto";
 }
+// BACKGROUND COLORS
+
 .green__bg {
     background-color: #10d167;
 }

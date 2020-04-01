@@ -17,7 +17,6 @@ router.post('/reportBudget', async (req,res) => {
         const saveReport = new Expenses(reportBudget);
         await saveReport.save();
         res.redirect('/');
-
     } catch(err) {
         res.render({ message: err});
     }
