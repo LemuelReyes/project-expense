@@ -7,7 +7,7 @@ const Expenses = require('../models/Expense');
 
 router.get('/update/:id', async(req, res) => {
     const idToUpdate = req.params.id;
-    const document = await Expenses.findById({ _id: idToUpdate }).exec();
+    const document = await Expenses.findById({ _id: idToUpdate });
     res.render("update",  { document })
 });
 
@@ -24,8 +24,7 @@ router.post('/update/:id', async(req, res) => {
 
     let filter = { _id: idToUpdate };
 
-    let result = await Expenses.updateOne(filter, updateReport).exec();
-    // console.log("Result: ", result)
+   await Expenses.updateOne(filter, updateReport).exec();
 
     res.redirect('/');
 });

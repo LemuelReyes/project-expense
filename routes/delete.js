@@ -5,12 +5,13 @@ const Expenses = require('../models/Expense');
 
 // DELETE
 
-router.get('/delete/:id', async(req, res) => {
+router.post('/delete/:id', async(req, res) => {
     try {
-        await Expenses.deleteOne({ _id: req.params.id });
+        await Expenses.findByIdAndDelete({ _id: req.params.id });
         res.redirect('/');
     } catch(err) {
-        res.json({ message: err })
+        console.log(err)
+        res.render('/', { message: 'This is an error' })
     }
 });
 

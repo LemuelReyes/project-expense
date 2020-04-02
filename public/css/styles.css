@@ -7,6 +7,11 @@
     src: url("./fonts/Roboto-Regular.ttf")
 }
 
+.flex {
+    display: flex;
+    justify-content: start;
+    flex-direction: row;
+}
 .updateForm {
     display: flex;
     flex-direction: column;
