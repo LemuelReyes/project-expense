@@ -115,6 +115,7 @@ input {
     text-decoration: none;
     border: 0.1px solid;
     border-radius: 20.5px;
+    cursor: pointer;
 }
 .green__bg {
     background-color: #10d167;

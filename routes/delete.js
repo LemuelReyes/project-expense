@@ -7,11 +7,26 @@ const Expenses = require('../models/Expense');
 
 router.post('/delete/:id', async(req, res) => {
     try {
-        await Expenses.findByIdAndDelete({ _id: req.params.id });
-        res.redirect('/');
+        const expense = await Expenses.findById(req.params.id);
+        
+        if(!expense) {
+            res.status(404).json({
+                success: false,
+                error: 'No expense found'
+            });
+        }
+        await expense.remove();
+
+        res.status(200).json({
+            success: true,
+            data: {}
+        });
+        res.redirect('./');
     } catch(err) {
-        console.log(err)
-        res.render('/', { message: 'This is an error' })
+        return res.status(500).json({
+            success: false,
+            error: 'Server Error'
+        });
     }
 });
 

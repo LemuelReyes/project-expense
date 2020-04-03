@@ -17,15 +17,12 @@ const createThis = require('./routes/create');
 const updateThis = require('./routes/update');
 const deleteThis = require('./routes/delete');
 
+// ROUTES
+
 app.use('/', home);
 app.use('/', createThis)
 app.use('/', updateThis);
-app.use('/', deleteThis);
-
-// ROUTES
-app.get('/', (req,res) => {
-    res.render('index')
-});
+app.post('/delete/:id', deleteThis);
 
 // MONGOOSE
 console.log(process.env.DB_CONNECTION)
