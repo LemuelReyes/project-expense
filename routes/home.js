@@ -20,8 +20,8 @@ router.get('/', async(req,res) => {
         const expenses = documents.map(report => report);
     //calculates budget 
     const budget = expenses.filter(number => number.budget)        
-    
-    const budgetTotal = Number(budget[0].budget)
+
+    const budgetTotal = ( budget.length ) ? Number(budget[0].budget) : 0;
 
     console.log(`Your budget is: ${budgetTotal}`)
 
@@ -74,6 +74,7 @@ router.get('/', async(req,res) => {
 
     const balance = calculateBalance(budgetTotal, assetNumber, expenseNumber)
     console.log(balance)
+    console.log(budgets)
   
     // render
     res.render('index', 
