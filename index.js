@@ -33,7 +33,7 @@ app.post('/delete/:id', deleteThis);
 mongoose.connect(process.env.DB_CONNECTION, { useNewUrlParser: true, useUnifiedTopology: true }, ()=>
 console.log('DB IS CONNECTED'));
 db = client.db()
-app.listen(port)
+app.listen( port || 5000)
 
 // LISTEN TO SERVER
 
