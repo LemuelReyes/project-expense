@@ -1,15 +1,6 @@
-const express = require('express');
-const app = express();
-const router = express.Router();
 const Expenses = require('../models/Expense');
 
-// MIDDLEWARE
-
-app.set('view engine', 'pug');
-
-// READ
-
-router.get('/', async(req,res) => {
+exports.home = async(req,res) => {
     try {
         const documents = await Expenses.find();
 
@@ -91,7 +82,4 @@ router.get('/', async(req,res) => {
     } catch(err) {
         res.json({ message: err});
     }
-});
-
-module.exports = router;
-
+}

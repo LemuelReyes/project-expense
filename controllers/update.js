@@ -1,10 +1,6 @@
-const express = require('express');
-const router = express.Router();
 const Expenses = require('../models/Expense');
 
-// UPDATE
-
-router.get('/update/:id', async(req, res) => {
+exports.getUpdate = async(req, res) => {
     try {
         const idToUpdate = req.params.id;
         const document = await Expenses.findById({ _id: idToUpdate });
@@ -15,9 +11,9 @@ router.get('/update/:id', async(req, res) => {
             error: 'Server Error'
         });
     }
-});
+}
 
-router.post('/update/:id', async(req, res) => {
+exports.postUpdate = async(req, res) => {
     try {
         const idToUpdate = req.params.id;
 
@@ -40,6 +36,4 @@ router.post('/update/:id', async(req, res) => {
             error: 'Server Error'
         });
     }
-});
-
-module.exports = router;
+}
