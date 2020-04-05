@@ -18,12 +18,12 @@ block content
                         input(type="number" placeholder="$" name="assetAmount" step="any")
                         button(class="submit__button") Submit
                 h1(class="category__titles budget__section") Budget:
+                h2(class="category__subtitle flex")= budgetInitialRender
                     each budget in budgets
-                        h2(class="category__subtitle flex")= budget.budget
-                            form(action="/update/" + budget._id method="GET")
-                                button(type="submit" class="blue__bg action__button") UPDATE
-                            form(action="/delete/" + budget._id method="POST")
-                                button(type="submit" class="red__bg action__button") DELETE                                
+                        form(action="/update/" + budget._id method="GET")
+                            button(type="submit" class="blue__bg action__button") UPDATE
+                        form(action="/delete/" + budget._id method="POST")
+                            button(type="submit" class="red__bg action__button") DELETE                                
                 h1(class="category__titles") Budget balance
                     p(class="category__subtitle")= balance
                 h1(class="category__titles blue__bg") Funds Available

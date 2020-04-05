@@ -12,8 +12,20 @@ app.set('view engine', 'pug');
 router.get('/', async(req,res) => {
     try {
         const documents = await Expenses.find();
-    // budget 
+
+    // budget val
         const budgets = documents.filter(expense => expense.budget);
+
+        const budgetInitial = (budgets) => {
+            if(budgets.length > 0 ) {
+                return budgets[0].budget
+            } else {
+                return `Enter your budget`
+            } 
+        }
+
+        budgetInitialRender = (budgetInitial(budgets));
+
     // expense, expenseAmount, asset, assetAmount
         const reports = documents.filter(expense => !expense.budget);
     // access documents   
@@ -22,7 +34,7 @@ router.get('/', async(req,res) => {
     const budget = expenses.filter(number => number.budget)        
 
     const budgetTotal = ( budget.length ) ? Number(budget[0].budget) : 0;
-
+    
     console.log(`Your budget is: ${budgetTotal}`)
 
     // calculates expenses
@@ -65,7 +77,9 @@ router.get('/', async(req,res) => {
 
     // budget + income - expenses = net income
         
-        if(budgetTotal + assetNumber - expenseNumber <= 0) {
+        if(budgetTotal + assetNumber - expenseNumber === 0) {
+            return `Enter your budget`
+        } else if(budgetTotal + assetNumber - expenseNumber < 0) {
             return `You are over budget`
         } else if(budgetTotal + assetNumber - expenseNumber > 0){
             return `You are within budget`
@@ -73,13 +87,12 @@ router.get('/', async(req,res) => {
     }
 
     const balance = calculateBalance(budgetTotal, assetNumber, expenseNumber)
-    console.log(balance)
-    console.log(budgets)
   
     // render
     res.render('index', 
     { expenseReport: reports, 
         budgets: budgets,
+        budgetInitialRender,
         expenseNumber, 
         assetNumber,
         historyTotal,
