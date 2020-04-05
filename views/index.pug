@@ -7,15 +7,17 @@ block content
             div
                 form(action="/reportBudget" method="POST")
                     div
-                        input(type="number" placeholder="Enter your budget" name="budget" step="any")
+                        input(type="number" placeholder="Enter your budget" name="budget" step="any" required)
                         button(class="submit__button") Submit
+                form(action="/reportBudget" method="POST")
                     div
-                        input(type="text" placeholder="Enter your expense" name="expense")
-                        input(type="number" placeholder="$" name="expenseAmount" step="any")
+                        input(type="text" placeholder="Enter your expense" name="expense" required)
+                        input(type="number" placeholder="$" name="expenseAmount" step="any" required)
                         button(class="submit__button") Submit
+                form(action="/reportBudget" method="POST")                    
                     div
-                        input(type="text" placeholder="Enter income assets" name="asset")
-                        input(type="number" placeholder="$" name="assetAmount" step="any")
+                        input(type="text" placeholder="Enter income assets" name="asset" required)
+                        input(type="number" placeholder="$" name="assetAmount" step="any" required)
                         button(class="submit__button") Submit
                 h1(class="category__titles budget__section") Budget:
                 h2(class="category__subtitle flex")= budgetInitialRender

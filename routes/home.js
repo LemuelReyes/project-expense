@@ -14,22 +14,15 @@ router.get('/', async(req,res) => {
         const documents = await Expenses.find();
 
     // budget val
-        const budgets = documents.filter(expense => expense.budget);
-
-        const budgetInitial = (budgets) => {
-            if(budgets.length > 0 ) {
-                return budgets[0].budget
-            } else {
-                return `Enter your budget`
-            } 
-        }
-
-        budgetInitialRender = (budgetInitial(budgets));
+    const budgets = documents.filter(expense => expense.budget);
+    const budgetInitialRender = (budgets.length) ? budgets[0].budget : 0;
 
     // expense, expenseAmount, asset, assetAmount
-        const reports = documents.filter(expense => !expense.budget);
+    const reports = documents.filter(expense => !expense.budget);
+
     // access documents   
-        const expenses = documents.map(report => report);
+    const expenses = documents.map(report => report);
+    
     //calculates budget 
     const budget = expenses.filter(number => number.budget)        
 
