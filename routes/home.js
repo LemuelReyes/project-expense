@@ -13,24 +13,24 @@ router.get('/', async(req,res) => {
     try {
         const documents = await Expenses.find();
 
-    // budget val
+    // Budget value
     const budgets = documents.filter(expense => expense.budget);
     const budgetInitialRender = (budgets.length) ? budgets[0].budget : 0;
 
-    // expense, expenseAmount, asset, assetAmount
+    // Access expense, expenseAmount, asset, assetAmount documents
     const reports = documents.filter(expense => !expense.budget);
 
-    // access documents   
+    // Access documents   
     const expenses = documents.map(report => report);
     
-    //calculates budget 
+    // Calculates the total of budget
     const budget = expenses.filter(number => number.budget)        
 
     const budgetTotal = ( budget.length ) ? Number(budget[0].budget) : 0;
     
     console.log(`Your budget is: ${budgetTotal}`)
 
-    // calculates expenses
+    // Calculates the expenses
     const expenseNumber = expenses.reduce(function(prev, current){
         if(current.expenseAmount) {
             return prev += Number(current.expenseAmount)
@@ -40,7 +40,7 @@ router.get('/', async(req,res) => {
 
     console.log('Expense total:', expenseNumber)
 
-    // calculates assets
+    // Calculates the assets
     const assetNumber = expenses.reduce(function(prev, current){
         if(current.assetAmount) {
             return prev += Number(current.assetAmount)
@@ -50,7 +50,7 @@ router.get('/', async(req,res) => {
 
     console.log('Asset total:', assetNumber)
 
-    // calculates total
+    // Calculates total
     let calculateTotal = function(budgetTotal, expenseNumber, assetNumber) {
  
         if(assetNumber > expenseNumber) {
@@ -64,12 +64,9 @@ router.get('/', async(req,res) => {
     
     let historyTotal = calculateTotal(budgetTotal, expenseNumber, assetNumber)
 
-    // calculates balance
+    // Calculates balance
 
-    const calculateBalance = function(budgetTotal, assetNumber, expenseNumber) {
-
-    // budget + income - expenses = net income
-        
+    const calculateBalance = function(budgetTotal, assetNumber, expenseNumber) {        
         if(budgetTotal + assetNumber - expenseNumber === 0) {
             return `Enter your budget`
         } else if(budgetTotal + assetNumber - expenseNumber < 0) {
