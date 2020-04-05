@@ -30,10 +30,12 @@ app.use('/', updateThis);
 app.post('/delete/:id', deleteThis);
 
 // MONGOOSE
-mongoose.connect(process.env.DB_CONNECTION, { useNewUrlParser: true, useUnifiedTopology: true }, ()=>
-console.log('DB IS CONNECTED'));
-db = client.db()
-app.listen( process.env.PORT || 3000)
+mongoose.connect(process.env.DB_CONNECTION, { useNewUrlParser: true, useUnifiedTopology: true }, function(err, client) {
+    db = client.db()
+    app.listen(port)
+});
+  
+
 
 // LISTEN TO SERVER
 
