@@ -4,7 +4,6 @@ const Expenses = require('../models/Expense');
 
 // CREATE
 router.post('/reportBudget', async (req,res) => {
-
     try {
         const reportBudget = {
             budget: req.body.budget,
@@ -17,7 +16,10 @@ router.post('/reportBudget', async (req,res) => {
         await saveReport.save();
         res.redirect('/');
     } catch(err) {
-        res.render({ message: err});
+        return res.status(500).json({
+            success: false,
+            error: 'Server Error'
+        });
     }
 });
 
