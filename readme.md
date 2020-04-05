@@ -3,15 +3,15 @@
 
 ### Tools used:
 
-⋅⋅* Express
-⋅⋅* Node.JS
-⋅⋅* Mongoose
-⋅⋅* Pug
-⋅⋅* Html
-⋅⋅* Css
-⋅⋅* Flexbox
-⋅⋅* Javascript
-⋅⋅* Dotenv
++ Express
++ Node.JS
++ Mongoose
++ Pug
++ Html
++ Css
++ Flexbox
++ Javascript
++ Dotenv
 
 ### Designed for desktop
 ### Mobile breakpoint is currently in development
