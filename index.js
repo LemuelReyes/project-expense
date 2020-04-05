@@ -2,7 +2,7 @@ const express = require('express')
 const app = express();
 const mongoose = require('mongoose');
 require('dotenv/config');
-let db
+
 let port = process.env.PORT
 if(port == null || port =="") {
     port = 3000
@@ -31,11 +31,9 @@ app.post('/delete/:id', deleteThis);
 
 // MONGOOSE
 mongoose.connect(process.env.DB_CONNECTION, { useNewUrlParser: true, useUnifiedTopology: true }, function(err, client) {
-    db = client.db()
     app.listen(port)
 });
   
-
 
 // LISTEN TO SERVER
 
