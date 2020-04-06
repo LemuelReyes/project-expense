@@ -20,7 +20,7 @@ block content
                         input(type="number" placeholder="$" name="assetAmount" step="any" required)
                         button(class="submit__button") Submit
                 h1(class="category__titles budget__section") Budget:
-                h2(class="category__subtitle flex")= budgetInitialRender
+                h2(class="category__subtitle flex")= '$' + budgetInitialRender
                     each budget in budgets
                         form(action="/update/" + budget._id method="GET")
                             button(type="submit" class="blue__bg action__button") UPDATE
@@ -29,11 +29,11 @@ block content
                 h1(class="category__titles") Budget balance
                     p(class="category__subtitle")= balance
                 h1(class="category__titles blue__bg") Funds Available
-                h2(class="category__subtitle")= historyTotal
+                h2(class="category__subtitle")= '$' + historyTotal
                 h1(class="category__titles red__bg") Expenses Total
-                h2(class="category__subtitle")= expenseNumber
+                h2(class="category__subtitle")= '$' + expenseNumber
                 h1(class="category__titles green__bg") Assets Total
-                h2(class="category__subtitle")= assetNumber    
+                h2(class="category__subtitle")= '$' + assetNumber    
         div(class="right__partition")
             h1(class="category__titles") Expense / Assets History
             div(class="categories__container")
@@ -41,12 +41,12 @@ block content
                 h1(class="history__titles") Amount
                 h1(class="history__titles") Action
             each report in expenseReport
-                div(class="reports__container")
-                    div 
-                        h2(class="red__bg reports__text")= report.expense 
+                ul(class="reports__container")
+                    li 
+                        h2(class="red__bg reports__text")= report.expense
                         h2(class="green__bg reports__text")= report.asset
-                    div
-                        h2(class="red__bg reports__text")= report.expenseAmount 
+                    li
+                        h2(class="red__bg reports__text")= report.expenseAmount
                         h2(class="green__bg reports__text")= report.assetAmount
                     div(class="flex")
                         form(action="/update/" + report._id method="GET")
