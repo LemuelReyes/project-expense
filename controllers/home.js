@@ -10,6 +10,7 @@ exports.home = async(req,res) => {
 
     // Access expense, expenseAmount, asset, assetAmount documents
     const reports = documents.filter(expense => !expense.budget);
+    console.log(reports)
 
     // Access documents   
     const expenses = documents.map(report => report);
@@ -43,14 +44,15 @@ exports.home = async(req,res) => {
 
     // Calculates total
     let calculateTotal = function(budgetTotal, expenseNumber, assetNumber) {
- 
-        if(assetNumber > expenseNumber) {
+        if (budgetTotal + assetNumber - expenseNumber === budgetTotal){
+            return budgetTotal
+        } else if(assetNumber > expenseNumber) {
             return budgetTotal + assetNumber - expenseNumber
         } else if(expenseNumber > assetNumber) {
             return budgetTotal + assetNumber - expenseNumber
         } else if(!assetNumber || !expenseNumber) {
             return budgetTotal
-        }
+        } 
     }
     
     let historyTotal = calculateTotal(budgetTotal, expenseNumber, assetNumber)
